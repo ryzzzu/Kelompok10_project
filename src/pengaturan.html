@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan</title>
+  <link href="./output.css" rel="stylesheet">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-white">
+
+<div class="flex min-h-screen">
+
+  <aside class="w-64 bg-slate-800 text-slate-300 flex flex-col">
+    <div class="h-16 flex items-center justify-center border-b border-slate-700">
+      <h1 class="text-2xl font-bold text-white">
+        ADMIN <span class="text-blue-500">PANEL</span>
+      </h1>
+    </div>
+
+    <nav class="flex-1 px-4 py-6 space-y-2">
+      <a href="index.html" class="flex px-4 py-3 hover:bg-slate-700 rounded-lg">Dashboard</a>
+      <a href="user.html" class="flex px-4 py-3 hover:bg-slate-700 rounded-lg">Manajemen User</a>
+      <a href="pengaturan.html" class="flex px-4 py-3 bg-blue-600 text-white rounded-lg">Pengaturan</a>
+    </nav>
+  </aside>
+
+  <div class="flex flex-col flex-1">
+
+    <header class="h-16 bg-white dark:bg-slate-800 shadow flex items-center justify-between px-6">
+      <h2 class="text-xl font-semibold">Pengaturan</h2>
+
+      <div class="flex items-center gap-4">
+        <span>Dark Mode</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="darkToggle" class="sr-only peer">
+          <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                      after:bg-white after:rounded-full after:h-5 after:w-5
+                      after:transition-all peer-checked:after:translate-x-full">
+          </div>
+        </label>
+      </div>
+    </header>
+
+    <main class="p-6 space-y-6">
+
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="font-semibold mb-4">Profil Admin</h3>
+        <input placeholder="Nama Lengkap" class="border p-2 rounded w-full mb-3 bg-transparent">
+        <input placeholder="Username" class="border p-2 rounded w-full mb-3 bg-transparent">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Simpan Profil</button>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="font-semibold mb-4">Keamanan</h3>
+        <input type="password" placeholder="Password Lama" class="border p-2 rounded w-full mb-3 bg-transparent">
+        <input type="password" placeholder="Password Baru" class="border p-2 rounded w-full mb-3 bg-transparent">
+        <input type="password" placeholder="Konfirmasi Password" class="border p-2 rounded w-full mb-3 bg-transparent">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Ubah Password</button>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow">
+        <h3 class="font-semibold mb-4">Notifikasi</h3>
+        <label class="flex items-center gap-3 mb-3">
+          <input type="checkbox" class="w-4 h-4">
+          Email Notifikasi
+        </label>
+        <label class="flex items-center gap-3">
+          <input type="checkbox" class="w-4 h-4">
+          Notifikasi Sistem
+        </label>
+      </div>
+
+    </main>
+
+  </div>
+</div>
+
+<script>
+const toggle = document.getElementById('darkToggle');
+const html = document.documentElement;
+
+if(localStorage.getItem('dark') === 'true'){
+  html.classList.add('dark');
+  toggle.checked = true;
+}
+
+toggle.addEventListener('change', function(){
+  if(this.checked){
+    html.classList.add('dark');
+    localStorage.setItem('dark', 'true');
+  } else {
+    html.classList.remove('dark');
+    localStorage.setItem('dark', 'false');
+  }
+});
+</script>
+
+</body>
+</html>
